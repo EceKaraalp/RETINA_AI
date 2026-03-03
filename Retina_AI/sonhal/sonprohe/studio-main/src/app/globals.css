@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+    /* ... diğer değişkenlerin olduğu gibi kalabilir */
+  }
+}
+
+/* 🌌 AI Temalı Dinamik Arka Plan */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-blue-gradient {
+  background: linear-gradient(
+    -45deg,
+    #020617,
+    /* Gece Siyahı */ #0f172a,
+    /* Koyu Lacivert */ #1e1b4b,
+    /* Derin İndigo */ #1e3a8a /* Safir Mavi */
+  );
+  background-size: 400% 400%;
+  animation: gradient-move 12s ease infinite;
+}
+
+/* 🎨 Sidebar Kaydırma Çubuğu */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* Yazıların Okunabilirliği İçin Extra Katman */
+.sidebar-overlay {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+}
+/* globals.css içine ekle */
+[data-sidebar="menu-button"][data-active="true"],
+[data-sidebar="menu-button"]:hover {
+  color: white !important; /* Yazı rengini beyaza zorla */
+}
+
+[data-sidebar="menu-button"] svg {
+  transition: color 0.2s ease;
+}
+
+[data-sidebar="menu-button"][data-active="true"] svg {
+  color: #60a5fa !important; /* Aktif ikon rengini maviye zorla */
+}
+@keyframes shine {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Kartların üzerine gelince parlaması için */
+.group:hover .shine-effect {
+  animation: shine 1.5s infinite;
+}
+/* globals.css veya özel css dosyan */
+@layer utilities {
+  .soft-dashboard-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(241, 245, 249, 0.8) 0%,
+      /* slate-100 */ rgba(219, 234, 254, 0.7) 50%,
+      /* blue-50 */ rgba(224, 231, 255, 0.6) 100% /* indigo-100 */
+    );
+  }
+}
+@layer utilities {
+  @keyframes slow-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-slow-pulse {
+    animation: slow-pulse 2.5s ease-in-out infinite;
+  }
+}
